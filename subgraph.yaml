@@ -1,0 +1,29 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: LlamaPayBot
+    network: mainnet
+    source:
+      address: "0xc5A4fec44fbDE08A7c9dE6e07b60De60aC074Ab9"
+      abi: LlamaPayBot
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - WithdrawCancelled
+        - WithdrawExecuted
+        - WithdrawScheduled
+      abis:
+        - name: LlamaPayBot
+          file: ./abis/LlamaPayBot.json
+      eventHandlers:
+        - event: WithdrawCancelled(address,address,address,address,uint216,uint40,uint40,bytes32)
+          handler: handleWithdrawCancelled
+        - event: WithdrawExecuted(address,address,address,address,uint216,uint40,uint40,bytes32)
+          handler: handleWithdrawExecuted
+        - event: WithdrawScheduled(address,address,address,address,uint216,uint40,uint40,bytes32)
+          handler: handleWithdrawScheduled
+      file: ./src/llama-pay-bot.ts
