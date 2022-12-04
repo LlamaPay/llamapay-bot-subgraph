@@ -1,6 +1,21 @@
-type ExampleEntity @entity {
-  id: Bytes!
-  count: BigInt!
-  owner: Bytes! # address
-  token: Bytes! # address
+type Schedule @entity {
+  id: ID!
+  scheduleId: Bytes!
+  owner: Bytes!
+  token: Token!
+  from: Bytes!
+  to: Bytes!
+  amountPerSec: BigInt!
+  starts: BigInt!
+  frequency: BigInt!
+  nextUpdate: BigInt!
+  active: Boolean!
+}
+
+type Token @entity {
+  id: ID!
+  address: Bytes!
+  symbol: String!
+  name: String!
+  decimals: Int!
 }

@@ -19,6 +19,8 @@ dataSources:
       abis:
         - name: LlamaPayBot
           file: ./abis/LlamaPayBot.json
+        - name: ERC20
+          file: ./abis/ERC20.json
       eventHandlers:
         - event: WithdrawCancelled(address,address,address,address,uint216,uint40,uint40,bytes32)
           handler: handleWithdrawCancelled
